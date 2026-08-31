@@ -1,0 +1,34 @@
+.footer {
+  background-color: #141414;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.text {
+  color: #808080;
+  font-size: 25px;
+  margin: 0;
+}
+
+.socials {
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  color: #e5e5e5;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #e50914;
+}
