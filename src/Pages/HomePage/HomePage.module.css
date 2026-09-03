@@ -1,0 +1,93 @@
+/* Contenedor principal para fondo oscuro */
+.container {
+  background-color: #121212;
+  color: #ffffff;
+  padding: 34px;
+  min-height: 80vh;
+}
+
+.heroSection {
+  margin-bottom: 20px;
+}
+
+.heroSection h1 {
+  font-size: 34px;
+  margin-bottom: 6px;
+}
+
+.heroSection p {
+  color: #aaaaaa;
+}
+
+.catalogSection h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/* Rejilla Horizontal (Grid) */
+.moviesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+/* Tarjeta individual */
+.movieCard {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.movieCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.cardImage {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+.cardTitle {
+  font-size: 20px;
+  margin: 12px;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardPrice {
+  font-size: 15px;
+  font-weight: bold;
+  color: #e50914;
+  margin: 0 12px;
+}
+
+.buyButton {
+  background-color: #e50914;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  margin: 0 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.buyButton:hover {
+  background-color: #b80710;
+}
+
+.error {
+  color: #ff4d4d;
+  font-weight: bold;
+}
