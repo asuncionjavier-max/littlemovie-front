@@ -1,77 +1,99 @@
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: linear-gradient(to bottom, rgba(20, 20, 20, 0.95), rgba(20, 20, 20, 0.7));
-  backdrop-filter: blur(6px);
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #121212;
+  border-bottom: 1px solid #2a2a2a;
+  color: #ffffff;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.logo span {
+  color: #e50914; /* Rojo característico del botón */
 }
 
 .nav {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0;
-}
-
-.title {
-  font-size: 40px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 1px;
-  margin: 0;
-}
-
-.title span {
-  color: #e50914;
-}
-
-.navList {
-  display: flex;
-  align-items: center;
   gap: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
-.navList li a {
-  color: #e5e5e5;
-  font-size: 20px;
+.nav a {
+  color: #b3b3b3;
   text-decoration: none;
+  font-size: 1rem;
   transition: color 0.2s ease;
 }
 
-.navList li a:hover {
-  color: #e50914;
+.nav a:hover {
+  color: #ffffff;
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Botón de Login (Estado Deslogueado) */
 .loginBtn {
   background-color: #e50914;
-  color: #fff !important;
+  color: #ffffff;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 4px;
+  text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.2s ease, transform 0.15s ease;
+  transition: background-color 0.2s ease;
 }
 
 .loginBtn:hover {
-  background-color: #f6121d;
-  transform: scale(1.03);
+  background-color: #f40612;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .nav {
-    flex-direction: column;
-    gap: 1rem;
-  }
+/* Controles de Usuario (Estado Logueado) */
+.userControls {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
 
-  .navList {
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+.userControls a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.userControls a:hover {
+  transform: scale(1.1);
+}
+
+.userName {
+  font-weight: 500;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoutBtn {
+  background-color: transparent;
+  border: 1px solid #444444;
+  color: #b3b3b3;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.logoutBtn:hover {
+  background-color: #e50914;
+  border-color: #e50914;
+  color: #ffffff;
 }
