@@ -1,0 +1,108 @@
+.container {
+  padding: 20px;
+}
+
+.title {
+  color: #f8fafc;
+  font-size: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.message, .errorMessage {
+  text-align: center;
+  color: #f8fafc;
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.errorMessage {
+  color: #ef4444;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 110px;
+}
+
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.poster {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+.cardContent {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.movieTitle {
+  color: #f8fafc;
+  font-size: 1.1rem;
+  margin: 0;
+  text-align: center;
+}
+
+.price {
+  color: #38bdf8;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.cartBtn {
+  flex: 1;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cartBtn:hover {
+  background-color: #b80710;
+}
+
+.wishlistBtn {
+  background-color: #334155;
+  border: none;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.wishlistBtn:hover {
+  background-color: #475569;
+}
