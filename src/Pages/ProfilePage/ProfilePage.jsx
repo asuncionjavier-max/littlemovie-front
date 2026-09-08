@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearUser } from "../../store/slices/authSlices";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./ProfilePage.module.css";
+import Wishlist from "../../components/Wishlist/Wishlist";
 
 function ProfilePage() {
     const dispatch = useDispatch();
@@ -58,6 +59,9 @@ return (
         </button>
         </div>
     </div>
+    <section className={styles.wishlistSection}>
+    <Wishlist />
+    </section>
     </main>
 );
 }

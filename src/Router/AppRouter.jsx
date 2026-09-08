@@ -4,6 +4,7 @@ import MovieDetailPage from "../Pages/MovieDetailPage/MovieDetailPage";
 import Layout from "../components/Layout/Layout";
 import Login from "../Pages/Login/Login";
 import ProfilePage from "../Pages/ProfilePage/ProfilePage";
+import Register from "../Pages/Register/Register";
 
 const router = createBrowserRouter([
     {
@@ -13,7 +14,8 @@ const router = createBrowserRouter([
             { index: true, element: <HomePage/> },
             {path: "/movies/:movieId", element: <MovieDetailPage />},
             {path: "/login", element: <Login />},
-            {path: "/profile", element: <ProfilePage />}
+            {path: "/profile", element: <ProfilePage />},
+            {path: "/register", element: <Register />}
         ]
     }
 ]);
