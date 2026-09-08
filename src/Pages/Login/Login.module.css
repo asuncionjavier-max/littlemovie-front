@@ -69,3 +69,15 @@
 .submitBtn:hover {
   background-color: #b80710;
 }
+
+.register{
+  display: flex;
+  justify-content: end;
+  font-size: 15px;
+  font-weight: 100;
+  transition: background-color, 0.2s, ease
+}
+
+:hover.register{
+  color:#b80710
+}

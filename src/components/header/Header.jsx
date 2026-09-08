@@ -1,10 +1,27 @@
 import styles from "./Header.module.css";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { clearUser } from "../../store/slices/authSlices";
+import apiCLient from "../../config/axios";
 
 function Header() {
-    const { user, logout } = useAuth();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
+    const user = useSelector((state) => state.auth.user);
+    const cartItems = useSelector((state) => state.cart.items);
+
+
+    const handleOut = async () =>{
+        try {
+            await apiCLient.post("/logout");
+        } catch (error) {
+            console.error("Error al cerrar sesion", error);
+        } finally{
+            dispatch(clearUser());   
+            navigate("/login");
+        }
+    };
 return (
     <header className={styles.header}>
     <Link to="/" className={styles.logo}>
@@ -26,8 +43,8 @@ return (
             <Link to = "/profile">
             <span className={styles.userName}>👤 {user.name}</span>
             </Link>
-            <button onClick={logout} className={styles.logoutBtn}>
-            Salir
+            <button onClick={handleOut} className={styles.logoutBtn}>
+            Logout
             </button>
         </div>
         ) : (

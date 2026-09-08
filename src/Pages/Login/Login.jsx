@@ -1,12 +1,13 @@
 import apiCLient from "../../config/axios";
 import { useRef, useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { useAuth } from "../../context/AuthProvider";
+import { useNavigate, Link } from "react-router-dom"
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/slices/authSlices";
 import styles from "./Login.module.css"
 
 function Login () {
 
-const {loginUser} = useAuth();
+const dispatch = useDispatch()
 const emailRef = useRef();
 const PasswordRef = useRef();
 
@@ -28,10 +29,10 @@ const handleSubmit = async (e) => {
 try {
     
     const response = await apiCLient.post("/login", payload);
-    loginUser(response.data.user || {name: "usuario"} )
+    const userData = response.data.user || response.data;
+    dispatch(setUser(userData))
     
     console.log("> Inicio de sesion", response.data)
-    
     navigate("/")
 
 } catch (err) {
@@ -75,6 +76,7 @@ try {
         <button type="submit" className={styles.submitBtn} disabled={loading}>
           {loading ? "Cargando..." : "Iniciar sesión"}
         </button>
+        <Link to ="/register" className={styles.register}> Registrate </Link>
       </form>
     </main>
 )
