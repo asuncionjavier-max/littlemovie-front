@@ -67,11 +67,13 @@
 .cardPrice {
   font-size: 15px;
   font-weight: bold;
-  color: #e50914;
+  color: #38bdf8;
   margin: 0 12px;
 }
 
 .buyButton {
+  display: flex;
+  justify-content: center;
   background-color: #e50914;
   color: #ffffff;
   border: none;

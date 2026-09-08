@@ -1,12 +1,14 @@
-    import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
-    import useFilterMovie from "../../Hooks/useFilterMovies";
-    import styles from "./HomePage.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import {addToCart} from "../../store/slices/cartSlice";
+import styles from "./HomePage.module.css";
 
     function HomePage() {
         const { data: movies, loading, error } = useFetch("/movies");
+        const dispatch = useDispatch()
+        const user = useSelector((state) => state.auth.user);
 
-        const genres = [ "todos", "Drama", "Accion", "Sci-Fi", "Terror", "Comedia",  ]
         return (
         <div className={styles.container}>
         <section className={styles.heroSection}>
@@ -31,7 +33,13 @@ import useFetch from "../../Hooks/useFetch";
                 /> </Link>
                 <h3 className={styles.cardTitle}>{movie.title}</h3>
                 <p className={styles.cardPrice}>{movie.price}$</p>
-                <button className={styles.buyButton}>Comprar</button>
+                { user ? 
+                (<button className={styles.buyButton}
+                        onClick= {() => useDispatch(addToCart(movie))}
+                        >
+                        añadir al carrito 
+                        </button>)
+                    :(<Link to="/login" className={styles.buyButton}> Inicia sesion </Link>)}
                 </div>
             ))}
             </div>
