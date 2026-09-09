@@ -74,10 +74,14 @@
   display: flex;
   justify-content: end;
   font-size: 15px;
-  font-weight: 100;
-  transition: background-color, 0.2s, ease
+  font-weight: 600;
+  text-decoration: none;
+  color: #38bdf8;
+  transition: color, 0.2s, ease
 }
 
 :hover.register{
-  color:#b80710
+  color:#b80710;
+  color: #7dd3fc;
+  text-decoration: underline;
 }

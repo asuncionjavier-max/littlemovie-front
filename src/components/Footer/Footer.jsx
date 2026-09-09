@@ -14,7 +14,7 @@ function Footer() {
                     LinkedIn
                 </a>
                 
-                 <a   href="https://github.com/asuncionjavier-max"
+                <a   href="https://github.com/asuncionjavier-max"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.link}

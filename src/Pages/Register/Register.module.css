@@ -1,11 +1,9 @@
-/* Register.module.css */
-
 .container { 
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 70px;
-  background-color: #121212; /* Fondo oscuro sutil */
+  background-color: #121212; 
 }
 
 .card {

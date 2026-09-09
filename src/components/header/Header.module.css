@@ -13,10 +13,15 @@
   font-weight: 700;
   color: #ffffff;
   text-decoration: none;
+  transition: transform, 02s, ease,;
 }
 
 .logo span {
-  color: #e50914; /* Rojo característico del botón */
+  color: #e50914; 
+}
+
+.logo:hover{
+  transform: scale(1.1);
 }
 
 .nav {
@@ -56,7 +61,7 @@
   background-color: #f40612;
 }
 
-/* Controles de Usuario (Estado Logueado) */
+
 .userControls {
   display: flex;
   align-items: center;

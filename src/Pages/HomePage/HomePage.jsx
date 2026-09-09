@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import { useDispatch, useSelector } from "react-redux";
-import {addToCart} from "../../store/slices/cartSlice";
+import {addToCartApi} from "../../store/slices/cartSlice";
 import styles from "./HomePage.module.css";
 
     function HomePage() {
@@ -39,7 +39,7 @@ import styles from "./HomePage.module.css";
                         >
                         añadir al carrito 
                         </button>)
-                    :(<Link to="/login" className={styles.buyButton}> Inicia sesion </Link>)}
+                    : <div></div>}
                 </div>
             ))}
             </div>

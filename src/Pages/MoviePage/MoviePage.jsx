@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
-import { addToCart } from "../../store/slices/cartSlice";
+import { addToCartApi } from "../../store/slices/cartSlice";
 import { addToWishlistApi } from "../../store/slices/wishlistSlices";
 import styles from "./MoviePage.module.css";
 
@@ -39,7 +39,9 @@ function MoviePage() {
                 <div className={styles.actions}>
                 <button
                     className={styles.cartBtn}
-                    onClick={() => dispatch(addToCart(movie))}
+                    onClick={() =>{
+                        console.log("añadiendo pelicula al carrito:", movie)
+                        dispatch(addToCart(movie))}}
                 >
                     🛒 Añadir
                 </button>

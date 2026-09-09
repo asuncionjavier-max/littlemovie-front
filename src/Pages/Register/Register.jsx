@@ -28,16 +28,14 @@ function Register() {
     };
 
     try {
-      // 1. Enviamos los datos del nuevo usuario al backend
         const response = await apiClient.post("/register", payload);
         alert("usuario registrado con exito, por favor inicia sesion en login")
 
-      // 2. Si tu backend inicia sesión automáticamente tras registrarse:
+
         if (response.data.user) {
         dispatch(setUser(response.data.user));
         navigate("/");
     } else {
-        // Si solo crea la cuenta sin iniciar sesión:
         navigate("/login");
     }
     } catch (err) {
