@@ -1,7 +1,7 @@
 import styles from "./Header.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { clearUser } from "../../store/slices/authSlices";
+import { clearUser, selectIsAdmin } from "../../store/slices/authSlices";
 import apiCLient from "../../config/axios";
 
 function Header() {
@@ -9,6 +9,7 @@ function Header() {
     const navigate = useNavigate();
 
     const user = useSelector((state) => state.auth.user);
+    const isAdmin = useSelector(selectIsAdmin)
     const cartItems = useSelector((state) => state.cart.items);
 
 
@@ -32,6 +33,7 @@ return (
         <Link to="/">Inicio</Link>
         <Link to="/movies">Películas</Link>
         <Link to="/about">Sobre nosotros</Link>
+        {isAdmin && <Link to="/admin">Administrador</Link>}
     </nav>
 
         <div className={styles.actions}>
