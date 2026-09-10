@@ -16,8 +16,11 @@ const authSlice = createSlice({
             localStorage.removeItem("user");
     },
 },
-
 });
+
+export const selectIsAdmin = (state) =>{
+    return state.auth.user?.role === 'admin'
+} 
 
 export const {setUser, clearUser} = authSlice.actions
 
