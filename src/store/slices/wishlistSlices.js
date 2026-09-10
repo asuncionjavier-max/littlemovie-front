@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import apiClient from "../../config/axios";
 
-// 1. Petición GET para traer la wishlist de la BD
 export const fetchWishlist = createAsyncThunk(
   "wishlist/fetchWishlist",
   async (_, { rejectWithValue }) => {
@@ -14,26 +13,24 @@ export const fetchWishlist = createAsyncThunk(
   }
 );
 
-// 2. Petición POST para añadir una película
 export const addToWishlistApi = createAsyncThunk(
   "wishlist/addToWishlistApi",
   async (movieId, { rejectWithValue, dispatch }) => {
     try {
       await apiClient.post("/wishlist", { movie: movieId });
-      dispatch(fetchWishlist()); // Recargamos la lista actualizada
+      dispatch(fetchWishlist()); 
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || "Error al añadir");
     }
   }
 );
 
-// 3. Petición DELETE para borrar una película
 export const removeFromWishlistApi = createAsyncThunk(
   "wishlist/removeFromWishlistApi",
   async (movieId, { rejectWithValue, dispatch }) => {
     try {
       await apiClient.delete(`/wishlist/${movieId}`);
-      dispatch(fetchWishlist()); // Recargamos la lista actualizada
+      dispatch(fetchWishlist());
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || "Error al eliminar");
     }
