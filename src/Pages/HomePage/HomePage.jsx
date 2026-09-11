@@ -1,51 +1,58 @@
 import { Link } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import { useDispatch, useSelector } from "react-redux";
-import {addToCartApi} from "../../store/slices/cartSlice";
+import { addToCartApi } from "../../store/slices/cartSlice";
 import styles from "./HomePage.module.css";
 
-    function HomePage() {
-        const { data: movies, loading, error } = useFetch("/movies");
-        const dispatch = useDispatch()
-        const user = useSelector((state) => state.auth.user);
+function HomePage() {
+  const { data: movies, loading, error } = useFetch("/movies");
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
 
-        return (
-        <div className={styles.container}>
-        <section className={styles.heroSection}>
-            <h1>Bienvenido a LittleMovie</h1>
-            <p>Disfruta de nuestro catálogo de películas</p>
-        </section>
+  return (
+    <div className={styles.container}>
+      <section className={styles.heroSection}>
+        <h1>Bienvenido a LittleMovie</h1>
+        <p>Disfruta de nuestro catálogo de películas</p>
+      </section>
 
-        <section className={styles.catalogSection}>
-            <h2>Películas aclamadas por la critica</h2>
-            {loading && <p>Cargando películas...</p>}
-            {error && <p className={styles.error}>{error}</p>}
-            
-            {/* El div que envuelve el map es el que debe tener el Grid */}
-            <div className={styles.moviesGrid}>
-            {movies?.slice().sort((a, b) => b.rating - a.rating).slice(0, 7).map((movie) => ( 
-                <div key={movie.id || movie} className={styles.movieCard}>
-            <Link to={`/movies/${movie.id}`}>
-                <img 
-                    className={styles.cardImage} 
-                    src={movie.movie_image || "/placeholder.png"} 
-                    alt={movie.title} 
-                /> </Link>
+      <section className={styles.catalogSection}>
+        <h2>Películas aclamadas por la critica</h2>
+        {loading && <p>Cargando películas...</p>}
+        {error && <p className={styles.error}>{error}</p>}
+
+        <div className={styles.moviesGrid}>
+          {movies
+            ?.slice()
+            .sort((a, b) => b.rating - a.rating)
+            .slice(0, 9)
+            .map((movie) => (
+              <div key={movie.id || movie} className={styles.movieCard}>
+                <Link to={`/movies/${movie.id}`}>
+                  <img
+                    className={styles.cardImage}
+                    src={movie.movie_image || "/placeholder.png"}
+                    alt={movie.title}
+                  />
+                </Link>
                 <h3 className={styles.cardTitle}>{movie.title}</h3>
                 <p className={styles.cardPrice}>{movie.price}$</p>
-                { user ? 
-                (<button className={styles.buyButton}
-                        onClick= {() => useDispatch(addToCart(movie))}
-                        >
-                        añadir al carrito 
-                        </button>)
-                    : <div></div>}
-                </div>
+                {user ? (
+                  <button
+                    className={styles.buyButton}
+                    onClick={() => useDispatch(addToCart(movie))}
+                  >
+                    añadir al carrito
+                  </button>
+                ) : (
+                  <div></div>
+                )}
+              </div>
             ))}
-            </div>
-        </section>
         </div>
-        );
-    }
+      </section>
+    </div>
+  );
+}
 
-    export default HomePage;
+export default HomePage;

@@ -1,31 +1,48 @@
 /* 1. Usar un modelo de caja más intuitivo */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 /* 2. Eliminar márgenes y rellenos por defecto */
-body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+body,
+figure,
+blockquote,
+dl,
+dd {
   margin: 0;
   padding: 0;
   background-color: #121212;
   color: #ffffff;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
 /* 3. Evitar desbordamientos y mejorar la fluidez de imágenes/multimedia */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
 /* 4. Heredar fuentes en elementos de texto y formularios */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
 /* 5. Altura predeterminada fluida para el documento */
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -35,7 +52,8 @@ body {
 }
 
 /* 6. Suprimir estilos de listas predeterminadas en elementos con rol */
-ul, ol {
+ul,
+ol {
   list-style: none;
   margin: 0;
   padding: 0;

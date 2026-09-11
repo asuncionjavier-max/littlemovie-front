@@ -14,24 +14,64 @@ function CartPage() {
     dispatch(fetchCartApi());
   }, [dispatch]);
 
+  const subtotal = cartItems.reduce(
+    (acc, item) => acc + (Number(item.price) || 0),
+    0,
+  );
+  const totalFormatted = subtotal.toFixed(2);
+
   if (loading) return <p>Cargando tu carrito...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (
     <div className={styles.container}>
-      {cartItems.map((movie) => {
-        const movieId = movie.id;
-        return (
-          <div key={movieId} className={styles.itemCart}>
-            <img src={movie.movie_image} className={styles.poster} alt="" />
-            <h3 className={styles.title}>{movie.movieTitle}</h3>
-            <h4 className={styles.price}>{movie.price}$</h4>
-            <button onClick={() => dispatch(removeFromCartApi(movieId))}>
-              Eliminar
-            </button>
+      <h1 className={styles.title}>Mi Carrito ({cartItems.length})</h1>
+
+      <div className={styles.content}>
+        <div className={styles.itemList}>
+          {cartItems.map((movie) => {
+            const movieId = movie.id;
+            return (
+              <div key={movieId} className={styles.itemCard}>
+                <img
+                  src={movie.movie_image || "/placeholder.png"}
+                  className={styles.poster}
+                  alt={movie.title}
+                />
+                <div className={styles.info}>
+                  <h3 className={styles.movieTitle}>{movie.title}</h3>
+                  <p className={styles.price}>{movie.price} €</p>
+                </div>
+                <button
+                  className={styles.deleteBtn}
+                  onClick={() => dispatch(removeFromCartApi(movie))}
+                >
+                  Eliminar
+                </button>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className={styles.summaryCard}>
+          <h2>Resumen del pedido</h2>
+          <div className={styles.summaryRow}>
+            <span>Productos ({cartItems.length})</span>
+            <span>{totalFormatted} €</span>
           </div>
-        );
-      })}
+          <div className={styles.summaryRow}>
+            <span>Gastos de envío</span>
+            <span style={{ color: "#10b981" }}>Gratis</span>
+          </div>
+          <hr className={styles.divider} />
+          <div className={`${styles.summaryRow} ${styles.totalRow}`}>
+            <span>Total</span>
+            <span>{totalFormatted} €</span>
+          </div>
+
+          <button className={styles.checkoutBtn}>Proceder al Pago</button>
+        </div>
+      </div>
     </div>
   );
 }
