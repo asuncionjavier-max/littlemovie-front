@@ -13,7 +13,7 @@ useEffect (() =>{
             const response = await apiCLient.get(endpoint);
 
             setData(response.data.data !== undefined ? response.data.data : response.data)
-
+            
             console.log(response.data)
         } catch (error) {
             setError(error.response?.data?.message || "Error al conectar con la API")
