@@ -25,7 +25,7 @@ function HomePage() {
           {movies
             ?.slice()
             .sort((a, b) => b.rating - a.rating)
-            .slice(0, 9)
+            .slice(0, 12)
             .map((movie) => (
               <div key={movie.id || movie} className={styles.movieCard}>
                 <Link to={`/movies/${movie.id}`}>

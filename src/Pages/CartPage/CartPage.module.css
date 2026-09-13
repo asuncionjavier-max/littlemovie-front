@@ -12,22 +12,6 @@
   margin-bottom: 18px;
 }
 
-.emptyContainer {
-  text-align: center;
-  color: #f8fafc;
-  padding: 4rem 1rem;
-}
-
-.emptyContainer h2 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-}
-
-.emptyContainer p {
-  color: #94a3b8;
-  margin-bottom: 1.5rem;
-}
-
 .shopBtn {
   display: inline-block;
   background-color: #2563eb;

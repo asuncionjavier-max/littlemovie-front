@@ -1,48 +1,53 @@
 import apiCLient from "../../config/axios";
-import { useRef, useState } from "react"
-import { useNavigate, Link } from "react-router-dom"
+import { useRef, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../store/slices/authSlices";
-import styles from "./Login.module.css"
+import styles from "./Login.module.css";
+import toast from "react-hot-toast";
 
-function Login () {
+function Login() {
+  const dispatch = useDispatch();
+  const emailRef = useRef();
+  const PasswordRef = useRef();
 
-const dispatch = useDispatch()
-const emailRef = useRef();
-const PasswordRef = useRef();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-const [loading, setLoading] = useState(false);
-const [error, setError] = useState(null);
-
-const navigate = useNavigate();
-
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    const toastId = toast.loading("Accediendo a tu usuario...");
 
-    // Extraemos los valores directamente de las referencias
     const payload = {
-    email: emailRef.current.value,
-    password: PasswordRef.current.value,
+      email: emailRef.current.value,
+      password: PasswordRef.current.value,
     };
-try {
-    
-    const response = await apiCLient.post("/login", payload);
-    const userData = response.data.user || response.data;
-    dispatch(setUser(userData))
-    
-    console.log("> Inicio de sesion", response.data)
-    navigate("/")
+    try {
+      const response = await apiCLient.post("/login", payload);
+      const userData = response.data.user || response.data;
 
-} catch (err) {
-    const errorMessage = err.response?.data?.message || "Error al iniciar sesión";
-    setError(errorMessage);
+      toast.success(
+        `Inicio de sesion completado, bienvenido, ${userData.name}`,
+        { id: toastId },
+      );
+
+      dispatch(setUser(userData));
+
+      console.log("> Inicio de sesion", response.data);
+      navigate("/");
+    } catch (err) {
+      const errorMessage =
+        err.response?.data?.message || "Error al iniciar sesión";
+      toast.error(errorMessage, { id: toastId });
+      setError(errorMessage);
     } finally {
-    setLoading(false);
-}
-}
-    return(
+      setLoading(false);
+    }
+  };
+  return (
     <main className={styles.container}>
       <form className={styles.card} onSubmit={handleSubmit}>
         <h2 className={styles.title}>Iniciar Sesión</h2>
@@ -76,11 +81,13 @@ try {
         <button type="submit" className={styles.submitBtn} disabled={loading}>
           {loading ? "Cargando..." : "Iniciar sesión"}
         </button>
-        <Link to ="/register" className={styles.register}> Registrate </Link>
+        <Link to="/register" className={styles.register}>
+          {" "}
+          Registrate{" "}
+        </Link>
       </form>
     </main>
-)
+  );
 }
 
-
-export default Login
+export default Login;
