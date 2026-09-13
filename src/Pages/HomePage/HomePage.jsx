@@ -40,7 +40,7 @@ function HomePage() {
                 {user ? (
                   <button
                     className={styles.buyButton}
-                    onClick={() => useDispatch(addToCart(movie))}
+                    onClick={() => dispatch(addToCartApi(movie))}
                   >
                     añadir al carrito
                   </button>
