@@ -21,9 +21,9 @@ export const addToWishlistApi = createAsyncThunk(
   async (movie, { rejectWithValue, dispatch }) => {
     const toastId = toast.loading("Añadiendo pelicula a la wishlist");
     try {
-      const movieId = movie.id;
+      const movieId = movie?.id || movie?.movieId || movie;
       await apiClient.post("/wishlist/", { movie: movieId });
-      toast.success(`"${movie.title}" añadida a la wishlist`, { id: toastId });
+      toast.success(` Pelicula añadida a la wishlist`, { id: toastId });
       dispatch(fetchWishlist());
     } catch (error) {
       const errorMessage = error.response?.data?.message || "Error al añadir";
