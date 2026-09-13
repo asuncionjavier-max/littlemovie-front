@@ -1,19 +1,34 @@
-# React + Vite
+# 🎬 LittleMovie - E-Commerce de Películas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web full-stack para explorar, gestionar y adquirir películas. Cuenta con autenticación de usuarios, catálogo dinámico, carrito de compras, lista de deseos y panel de administración con subida de portadas.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🔑 Credenciales de Administrador
 
-## React Compiler
+Para acceder al panel de administración y subir películas:
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+* **Email:** `admin@admin.com`
+* **Contraseña:** `admin1234`
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+---
 
-## Expanding the ESLint configuration
+## 📁 Arquitectura del Proyecto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+El proyecto está dividido en dos repositorios independientes:
+
+* 💻 **Frontend (React / Vite):** Hosted en Netlify
+* ⚙️ **Backend (Node.js / Express):** Hosted en Render
+
+---
+
+## 💻 Frontend (Repositorio Client)
+
+### Tecnologías
+* React (Vite), Redux Toolkit, React Router DOM, CSS Modules, Axios, React Hot Toast.
+
+### Configuración Local
+1. Clonar el repositorio del frontend:
+   ```bash
+   git clone [https://github.com/tu-usuario/frontend-repo.git](https://github.com/tu-usuario/frontend-repo.git)
+   cd frontend-repo
